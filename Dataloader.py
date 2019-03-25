@@ -24,9 +24,10 @@ class DataLoader:
 
     def __init__(self,source,training_split):
 
-        """
-        training_split is fraction you want to split into training, the rest into validation
-        """
+        '''
+        Input:
+            training_split: (float) fraction you want to split into training, the rest will be put into validation
+        '''
 
         barrel_images = os.listdir(source)
         training_size = int(len(barrel_images)*training_split)
