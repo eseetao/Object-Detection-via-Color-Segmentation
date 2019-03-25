@@ -162,8 +162,6 @@ if __name__ == "__main__":
 
     print(os.getcwd())
 
-
-
     #for one class
     Data = DataLoader("/Users/eseetao/Documents/School Docs/ECE276A/Project 1/trainset",0.8)
     Data.label_images("/Users/eseetao/Documents/School Docs/ECE276A/Project 1/Blue_Barrel_Data.pickle")
