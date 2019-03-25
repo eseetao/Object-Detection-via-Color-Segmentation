@@ -27,9 +27,9 @@ class logistic_regression:
     def __init__(self,window_len,classes):
 
         '''
-			Input:
-				window_len: (int) the X by X window size, recommend setting to 10
-				classes: (int) number of feature classes (1 for barrel, 2 for non-barrel blue and barrel)
+	Input:
+		window_len: (int) the X by X window size, recommend setting to 10
+		classes: (int) number of feature classes (1 for barrel, 2 for non-barrel blue and barrel)
         '''
 
         self.root_dir = "/Users/eseetao/Documents/School Docs/ECE276A/Project 1/"
@@ -46,13 +46,13 @@ class logistic_regression:
     def sigmoid(data,weights,bias):
         '''
         for single class (barrel) logistic regression
-		Input:
-			data: (np.array) features for barrel class
-			weights: (np.array) vector of weights corresponding to each feature
-			bias: (float) binary 0 or 1 classification
-		Output:
-			(np.array) normalized softmax for single clas
-		'''
+	Input:
+		data: (np.array) features for barrel class
+		weights: (np.array) vector of weights corresponding to each feature
+		bias: (float) binary 0 or 1 classification
+	Output:
+		(np.array) normalized softmax for single clas
+	'''
 
         x = np.dot(data,weights) + bias
         sigmoid = 1/(1 + np.exp(-x)) 
@@ -62,13 +62,13 @@ class logistic_regression:
     def softmax(data,weights,bias):
         '''
         for multiclass logistic regression
-		Input:
-			data: (np.array) features for multiclass
-			weights: (np.array) vector of weights corresponding to each feature
-			bias: (float) bias during training
-		Output:
-			(np.array) normalized softmax for multiclass
-		'''
+	Input:
+		data: (np.array) features for multiclass
+		weights: (np.array) vector of weights corresponding to each feature
+		bias: (float) bias during training
+	Output:
+		(np.array) normalized softmax for multiclass
+	'''
 
         x = np.dot(data,weights) + bias
         x = np.exp(x - np.max(x))
@@ -77,16 +77,16 @@ class logistic_regression:
 
     def train(self,barrel_list,epochs,learning_rate,epsilon):
         '''
-		logistic regression training
+	logistic regression training
 
-		Input:
-			barrel_list: (np.array) features and label from unpickled file
-			epochs: (int) learning epochs
-			learning_rate: (float) learning rate
-			epsilon: (float) logistic regression error
-		Output:
-			The updated self.weights and self.bias for test function calling sigmoid/softmax
-		'''
+	Input:
+		barrel_list: (np.array) features and label from unpickled file
+		epochs: (int) learning epochs
+		learning_rate: (float) learning rate
+		epsilon: (float) logistic regression error
+	Output:
+		The updated self.weights and self.bias for test function calling sigmoid/softmax
+	'''
 
         sample_counter = 0
         error_plot = []
@@ -125,11 +125,11 @@ class logistic_regression:
 
     def test(self,image):
         '''
-		Input:
-			image: (np.array) np matrix of the test image
-		Output:
-			test_mask: (np.array) mask of the barrel on the test image
-		'''
+	Input:
+		image: (np.array) np matrix of the test image
+	Output:
+		test_mask: (np.array) mask of the barrel on the test image
+	'''
 
         test_mask = np.zeros((800, 1200, self.classes)) #for more general cases use .shape on image
 
