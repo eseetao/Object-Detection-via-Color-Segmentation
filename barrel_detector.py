@@ -1,9 +1,4 @@
-'''
-Blue Barrel Detector
-'''
-
 __author__ =  "Erik Seetao"
-__PID__ = "A10705834"
 
 import os, cv2
 from skimage.measure import label, regionprops
@@ -30,13 +25,13 @@ import matplotlib.patches as patches
 class BarrelDetector():
 	def __init__(self, window_len = 10, classes = 1, pickle_file = "/Users/eseetao/Documents/School Docs/ECE276A/Project 1/Blue_Barrel_Data.pickle"):
 		'''
-			Initilize your blue barrel detector with the attributes you need
-			eg. parameters of your classifier
+		Initilize your blue barrel detector with the attributes you need
+		eg. parameters of your classifier
 
-			Input:
-				window_len: (int) the X by X window size, recommend setting to 10
-				classes: (int) number of feature classes (1 for barrel, 2 for non-barrel blue and barrel)
-				pickle_file: (str) directory path of pickled ROI files for barrel masks
+		Input:
+			window_len: (int) the X by X window size, recommend setting to 10
+			classes: (int) number of feature classes (1 for barrel, 2 for non-barrel blue and barrel)
+			pickle_file: (str) directory path of pickled ROI files for barrel masks
 		'''
 
 		self.classes = 1
@@ -72,7 +67,7 @@ class BarrelDetector():
 	@staticmethod
 	def sigmoid(data,weights,bias):
 		'''
-        for single class (barrel) logistic regression
+        	for single class (barrel) logistic regression
 		Input:
 			data: (np.array) features for barrel class
 			weights: (np.array) vector of weights corresponding to each feature
@@ -88,7 +83,7 @@ class BarrelDetector():
 	@staticmethod
 	def softmax(data,weights,bias):
 		'''
-        for multiclass logistic regression
+        	for multiclass logistic regression
 		Input:
 			data: (np.array) features for multiclass
 			weights: (np.array) vector of weights corresponding to each feature
@@ -171,14 +166,14 @@ class BarrelDetector():
 
 	def segment_image(self, img):
 		'''
-			Calculate the segmented image using a classifier
-			eg. Single Gaussian, Gaussian Mixture, or Logistic Regression
-			call other functions in this class if needed
+		Calculate the segmented image using a classifier
+		eg. Single Gaussian, Gaussian Mixture, or Logistic Regression
+		call other functions in this class if needed
 			
-			Inputs:
-				img - original image
-			Outputs:
-				mask_img - a binary image with 1 if the pixel in the original image is blue and 0 otherwise
+		Inputs:
+			img - original image
+		Outputs:
+			mask_img - a binary image with 1 if the pixel in the original image is blue and 0 otherwise
 		'''
 
 		img_predict = self.test(img)[:,:,0]
@@ -190,15 +185,15 @@ class BarrelDetector():
 
 	def get_bounding_box(self, img):
 		'''
-			Find the bounding box of the blue barrel
-			call other functions in this class if needed
+		Find the bounding box of the blue barrel
+		call other functions in this class if needed
 			
-			Inputs:
-				img - original image
-			Outputs:
-				boxes - a list of lists of bounding boxes. Each nested list is a bounding box in the form of [x1, y1, x2, y2] 
-				where (x1, y1) and (x2, y2) are the top left and bottom right coordinate respectively. The order of bounding boxes in the list
-				is from left to right in the image.
+		Inputs:
+			img - original image
+		Outputs:
+			boxes - a list of lists of bounding boxes. Each nested list is a bounding box in the form of [x1, y1, x2, y2] 
+			where (x1, y1) and (x2, y2) are the top left and bottom right coordinate respectively. The order of bounding boxes in the list
+			is from left to right in the image.
 				
 			Our solution uses xy-coordinate instead of rc-coordinate. More information: http://scikit-image.org/docs/dev/user_guide/numpy_images.html#coordinate-conventions
 		'''
