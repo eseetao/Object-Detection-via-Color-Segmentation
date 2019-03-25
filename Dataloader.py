@@ -1,5 +1,4 @@
 __author__ = "Erik Seetao"
-__PID__ = "A10705834"
 
 import os
 import pickle
